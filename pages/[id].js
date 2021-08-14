@@ -19,10 +19,15 @@ function dynamicPage({ id }) {
 
 export default dynamicPage;
 
-export async function getServerSideProps(ctx) {
+export const getStaticPaths = async () => {
   return {
-    props: {
-      id: ctx.query.id,
-    },
+    paths: [],
+    fallback: "blocking",
   };
-}
+};
+
+export const getStaticProps = async (ctx) => {
+  const id = ctx.params.id;
+
+  return { props: { id } };
+};
