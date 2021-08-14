@@ -1,9 +1,8 @@
-import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 
-function dynamicPage() {
-  const router = useRouter();
-  const id = router.query.id;
+function dynamicPage({ id }) {
+  console.log(id);
+  // const id = "1";
   const prefix = "/deploy-next-app-on-github";
   return (
     <div>
@@ -19,3 +18,11 @@ function dynamicPage() {
 }
 
 export default dynamicPage;
+
+export async function getServerSideProps(ctx) {
+  return {
+    props: {
+      id: ctx.query.id,
+    },
+  };
+}
