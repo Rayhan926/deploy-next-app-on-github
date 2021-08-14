@@ -21,7 +21,7 @@ export default dynamicPage;
 
 export const getStaticPaths = async () => {
   return {
-    paths: [],
+    paths: ["/1", "/2", "/3", "/4", "/5"],
     fallback: false,
   };
 };
